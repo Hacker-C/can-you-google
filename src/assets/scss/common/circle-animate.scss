@@ -1,0 +1,26 @@
+@keyframes circle {
+  0% {
+    scale: 0;
+    opacity: 1;
+  }
+  99% {
+    scale: 100%;
+    opacity: 0;
+  }
+  100% {
+    scale: 0%;
+    opacity: 0;
+  }
+}
+
+.circle-animate {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  background-color: transparent;
+  outline: 20px solid #ccc;
+  animation-name: circle;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}

@@ -1,0 +1,26 @@
+.description {
+  margin-top: 100px;
+  font-size: 50px;
+  color: #4285f4;
+  text-align: center;
+  img {
+    display: inline-block;
+    vertical-align: middle;
+    width: 180px;
+  }
+  @keyframes show {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 100%;
+    }
+  }
+  span {
+    margin: 0 15px;
+    animation: show 1.2s;
+  }
+}
