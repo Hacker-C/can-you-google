@@ -5,5 +5,6 @@ module.exports = {
       rootValue: 16, // the html font size, for rem layout
       propList: ['*']
     }
+    // 前缀追加
   }
 }
