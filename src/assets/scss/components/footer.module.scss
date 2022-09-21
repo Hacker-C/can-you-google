@@ -1,11 +1,8 @@
 .foot {
+  text-align: center;
   margin-top: 10px;
-  position: absolute;
-  left: 50%;
-  translate: -50% 0;
-  bottom: 5px;
   font-size: 15px;
-  div > a {
+  a {
     color: #333;
     text-decoration: none;
   }

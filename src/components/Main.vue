@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import styles from '@/assets/scss/components/main.module.scss'
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, toRefs } from 'vue'
 import { translate, circle } from '@/hooks/animate'
+import { state, setState, SE } from '@/stores/state'
+import Footer from '@/components/Footer.vue'
+
+const { se, seLink, themeColor } = toRefs(state)
 
 // the elements
 const mouseRef = ref<HTMLElement | null>(null)
@@ -11,14 +15,6 @@ const buttonRef = ref<HTMLInputElement | null>(null)
 const linkRef = ref<HTMLInputElement | null>(null)
 
 const keyword = ref('')
-const se = ref('google')
-const map = new Map()
-  .set('baidu', 'https://baidu.com/s?wd=')
-  .set('google', 'https://google.com/search?q=')
-const seLink = computed(() => {
-  return map.get(se.value)
-})
-
 let timer: NodeJS.Timer
 let openTimer: NodeJS.Timer
 let inputTimer: NodeJS.Timer
@@ -68,8 +64,6 @@ const cbs = [
     }, 1000)
   },
   () => {
-    // location.href = 'https://baidu.com/s?wd=' + keyword.value
-    // /
     circle(leftRecord.value, topRecord.value)
     openTimer = setTimeout(() => {
       location.href = seLink.value + keyword.value
@@ -102,6 +96,8 @@ const stop = () => {
 
 // if the url includes kw and se params, do it
 onMounted(() => {
+  let se = new URLSearchParams(location.search).get('se')
+  setState(se as SE)
   const timer = setTimeout(() => {
     startup()
     clearTimeout(timer)
@@ -144,23 +140,26 @@ const step = computed(() => steps[textIndex.value])
       alt="mouse"
       @transitionend="onTransitionEnd" />
     <div :class="styles['form-wrapper']">
-      <form ref="formRef" :class="styles['form-submit']">
+      <form ref="formRef" :class="styles['form-submit']" :style="{ backgroundColor: themeColor }">
         <input
           ref="inputRef"
           type="text"
           placeholder="input something to search"
           v-model="keyword" />
-        <button ref="buttonRef" @click.prevent="handleSubmit">Let's google it</button>
+        <button ref="buttonRef" @click.prevent="handleSubmit">Let's go</button>
       </form>
     </div>
     <div :class="styles.step">{{ step }}</div>
     <div :class="styles.info">
-      <button @click="stop">Stop! I know how to google.</button>
+      <button @click="stop">Stop! I know how to do.</button>
     </div>
     <div :class="styles['link-area']" v-show="showLink">
       <div>
         <div :class="styles.tip">Here is the link, click and copy it to send to others:</div>
-        <div ref="linkRef" :class="styles.link" target="_blank">{{ link() }}</div>
+        <div ref="linkRef" :class="styles.link" target="_blank" :style="{ color: themeColor }">
+          {{ link() }}
+        </div>
+        <Footer />
       </div>
     </div>
   </main>

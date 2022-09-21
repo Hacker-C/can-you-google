@@ -17,9 +17,8 @@
   text-align: center;
   display: inline-block;
   border-radius: 10px;
-  width: 625px;
+  width: 564px;
   padding: 5px 0;
-  background-color: #4285f4;
   input {
     border-radius: 6px;
     width: 450px;
@@ -73,15 +72,13 @@
     padding: 8px 20px;
     background-color: #f8f8f8;
     .tip {
-      color: #333;
-      font-weight: 700;
+      color: #000;
     }
     .link {
       display: inline-block;
       width: 400px;
       font-size: 18px;
       font-weight: 200;
-      color: #4285f4;
       user-select: all;
       cursor: text;
       text-decoration: underline;

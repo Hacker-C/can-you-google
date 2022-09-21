@@ -4,9 +4,9 @@ import footer from '@/assets/scss/components/footer.module.scss'
 
 <template>
   <footer :class="footer.foot">
-    <div>
-      &copy;MurphyChen 2022 |
-      <a href="https://beian.miit.gov.cn/" target="_blank">湘ICP备 2022004296号</a>
-    </div>
+    Inspired by
+    <a href="https://buhuibaidu.me/" target="_blank">buhuibaidu</a>
+    |
+    <a href="https://github.com/Hacker-C/can-you-google" target="_blank">Hacker-C/can-you-google</a>
   </footer>
 </template>
