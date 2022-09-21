@@ -1,4 +1,4 @@
-### Tell you how to Google
+### Tell you how to Google, just for fun
 
 If someone ask you a simple question, you can send it to him/her.
 
